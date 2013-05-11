@@ -1,0 +1,19 @@
+<h2>User:</h2>
+
+<ul>
+  <% user.attributes.each_pair do |key, val| %>
+    <li> <%= key %>: <%= val %> </li>
+  <% end %>
+</ul>
+
+
+<h2>Profile:</h2>
+
+<ul>
+  <% profile.attributes.each_pair do |key, val| %>
+    <li> <%= key %>: <%= val %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create User", new_user_path %>
+<%= link_to "Edit User", edit_user_path(user) %>
