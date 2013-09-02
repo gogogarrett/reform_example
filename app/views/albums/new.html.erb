@@ -1,0 +1,13 @@
+New Album
+
+<%= form_for @form do |f| %>
+  <%= f.text_field :title %>
+
+  <%= f.fields_for :songs do |song| %>
+    <%= song.text_field :name %>
+  <% end %>
+
+  <%= f.object.inspect %>
+
+  <%= f.submit %>
+<% end %>
