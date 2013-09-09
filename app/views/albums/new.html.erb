@@ -2,17 +2,27 @@ New Album
 
 
 <%= form_for @form do |f| %>
-  Album Title: <%= f.text_field :title %>
+ <% if @form.errors.any? %>
+   <div>
+     <h3><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h3>
 
+     <ul>
+       <% @form.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <%= f.label :title, "Album Title" %>
+  <%= f.text_field :title %>
 
 	  <%= f.fields_for :songs do |song| %>
 	  	<div>
-	      <%#= h song.inspect %>
-	      Song: <%= song.text_field :name %>
-		</div>
+        <%= song.label :name %>:
+	      <%= song.text_field :name %>
+		  </div>
 	  <% end %>
 
   <%= f.submit %>
-
-  <%= h @form.errors.messages.inspect %>
 <% end %>

@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:apotonick/reform.git
-  revision: 348c02fc50b486e5f5ffebdff0aed636a959b15b
+  revision: 4d55210938544985214c81159c59bdda24b98e52
   specs:
     reform (0.1.2)
       activemodel
@@ -62,7 +62,7 @@ GEM
     mime-types (1.23)
     mini_portile (0.5.1)
     minitest (4.7.5)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
