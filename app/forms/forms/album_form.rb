@@ -1,30 +1,24 @@
+Reform::Form.class_eval do
+  include Reform::Form::ActiveModel::FormBuilderMethods
+end
+
 module Forms
   class AlbumForm < Reform::Form
+    model :album
+
     property :title
 
     collection :songs do
       property :name
+       validates :name, presence: true
     end
 
-    def to_key
-      [model.id]
-    end
+    validates :title, presence: true
+    #include Reform::Form::ActiveModel::FormBuilderMethods
 
-    def persisted?
-      model.id.present?
+    def save
+      super
+      model.save
     end
-
-    def self.model_name
-      ::ActiveModel::Name.new(self, nil, "Album")
-    end
-
-    def to_param
-      model.id
-    end
-
-    def to_model
-      self
-    end
-
   end
 end
