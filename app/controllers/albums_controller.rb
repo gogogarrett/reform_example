@@ -9,12 +9,11 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    album = Album.new
-
-    (1+rand(7)).ceil.times do |i|
-      album.songs.build
-    end
-
+    # build random amount of songs
+    # (1+rand(7)).ceil.times do |i|
+    #   album.songs.build
+    # end
+    album = Album.new(songs: [Song.new, Song.new])
     @form = Forms::AlbumForm.new(album)
   end
 
@@ -24,7 +23,11 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    album = Album.new(:songs => [Song.new, Song.new])
+    # how you could do it dynamically..(for now)
+    # params[:album][:songs_attributes].size.times do |i|
+    #   album.songs.build
+    # end
+    album = Album.new(songs: [Song.new, Song.new])
     @form = Forms::AlbumForm.new(album)
 
     if @form.validate(params["album"])
@@ -37,7 +40,6 @@ class AlbumsController < ApplicationController
 
   def update
     album = Album.find(params[:id])
-
     @form = Forms::AlbumForm.new(album)
 
     if @form.validate(params["album"])
@@ -46,6 +48,6 @@ class AlbumsController < ApplicationController
     else
       render :edit
     end
-
   end
+
 end

@@ -8,7 +8,7 @@
 <% if @album.songs.any? %>
   <h3>Songs: </h3>
   <ul>
-    <%= @album.songs.each do |song| %>
+    <% @album.songs.each do |song| %>
       <li>
         <%= song.inspect %>
       </li>
