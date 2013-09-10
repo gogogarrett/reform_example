@@ -8,6 +8,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
+gem 'bootstrap-sass', '~> 2.3.2.1'
+
 group :doc do
   gem 'sdoc', require: false
 end

@@ -1,7 +1,25 @@
-class AlbumsController < ActionController::Base
+class AlbumsController < ApplicationController
+
+  def index
+    @albums = Album.all
+  end
+
+  def show
+    @album = Album.find(params[:id])
+  end
 
   def new
-    album = Album.new(:songs => [Song.new, Song.new])
+    album = Album.new
+
+    (1+rand(7)).ceil.times do |i|
+      album.songs.build
+    end
+
+    @form = Forms::AlbumForm.new(album)
+  end
+
+  def edit
+    album = Album.find(params[:id])
     @form = Forms::AlbumForm.new(album)
   end
 
@@ -11,9 +29,10 @@ class AlbumsController < ActionController::Base
 
     if @form.validate(params["album"])
       @form.save
+      redirect_to album_path(album)
+    else
+      render :new
     end
-
-    render action: :new
   end
 
   def update
@@ -23,8 +42,10 @@ class AlbumsController < ActionController::Base
 
     if @form.validate(params["album"])
       @form.save
+      redirect_to album_path(album)
+    else
+      render :edit
     end
 
-    render action: :new
   end
 end

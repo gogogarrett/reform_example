@@ -1,0 +1,22 @@
+<h2>Ablums and Songs</h2>
+
+<h4>1-n Example</h4>
+
+<ul>
+  <% @albums.each do |album| %>
+    <li>
+      <%= link_to album_path(album) do %>
+        <%= album.inspect %>
+        <ul>
+          <% album.songs.each do |song| %>
+            <li>
+              <%= song.inspect %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Album", new_album_path, class: 'btn' %>

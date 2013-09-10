@@ -1,4 +1,3 @@
-new.html.erb
 <%= form_for @form, url: artists_path, method: :post do |f| %>
 
   <%= f.fields_for :songs, artist.songs do |art| %>
