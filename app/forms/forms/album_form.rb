@@ -1,9 +1,6 @@
-Reform::Form.class_eval do
-  include Reform::Form::ActiveModel::FormBuilderMethods
-end
-
 module Forms
-  class AlbumForm < Reform::Form
+  class AlbumForm < Reform::Form # FIXME: sub forms don't inherit FBM.
+
     model :album
 
     property :title
