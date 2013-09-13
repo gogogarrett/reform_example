@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 gem 'therubyracer'
 
+gem 'bootstrap-sass', '~> 2.3.2.1'
+
 group :doc do
   gem 'sdoc', require: false
 end

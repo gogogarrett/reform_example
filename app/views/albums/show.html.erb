@@ -1,0 +1,23 @@
+<h2>Ablums and Songs</h2>
+
+<h4>1-n Example</h4>
+
+<h3>Album:</h3>
+<%= @album.inspect %>
+
+<% if @album.songs.any? %>
+  <h3>Songs: </h3>
+  <ul>
+    <% @album.songs.each do |song| %>
+      <li>
+        <%= song.inspect %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br />
+
+<%= link_to "Edit Album", edit_album_path(@album), class: 'btn'  %>
+<br />
+<%= link_to "Back to Albums", albums_path, class: 'btn'  %>

@@ -7,11 +7,10 @@ module Forms
 
     collection :songs do
       property :name
-       validates :name, presence: true
+      validates :name, presence: true
     end
 
     validates :title, presence: true
-    #include Reform::Form::ActiveModel::FormBuilderMethods
 
     def save
       super
