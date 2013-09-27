@@ -16,4 +16,4 @@ group :doc do
 end
 
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'reform', path: "../reform"#git: 'git@github.com:apotonick/reform.git'
+gem 'reform', git: 'git@github.com:apotonick/reform.git'
