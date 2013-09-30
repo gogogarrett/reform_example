@@ -17,3 +17,6 @@
 /tmp
 
 public/assets/**/*
+
+*.iml
+.idea
