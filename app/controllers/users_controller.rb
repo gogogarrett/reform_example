@@ -3,6 +3,13 @@ class UsersController < ApplicationController
   before_action :create_new_form, only: [:new, :create]
   before_action :create_edit_form, only: [:edit, :update]
 
+  def new
+  end
+
+  def index
+    @users = User.all
+  end
+
   def create
     workflow = Workflows::UserWorkflow.new(@form, params[:user])
     workflow.process do |user|
