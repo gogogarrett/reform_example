@@ -1,0 +1,16 @@
+<h2>Users</h2>
+
+<h4>Single Example</h4>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user_path(user) do %>
+        <%= user.first_name %>
+        <%= user.last_name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New User", new_user_path, class: 'btn' %>
