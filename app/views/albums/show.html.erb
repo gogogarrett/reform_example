@@ -2,15 +2,14 @@
 
 <h4>1-n Example</h4>
 
-<h3>Album:</h3>
-<%= @album.inspect %>
+<h3><%= @album.title %></h3>
 
 <% if @album.songs.any? %>
-  <h3>Songs: </h3>
+  <h4>Songs: </h4>
   <ul>
     <% @album.songs.each do |song| %>
       <li>
-        <%= song.inspect %>
+        <%= song.name %>
       </li>
     <% end %>
   </ul>

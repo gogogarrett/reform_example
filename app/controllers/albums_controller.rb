@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-
   def index
     @albums = Album.all
   end
@@ -9,11 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    # build random amount of songs
-    # (1+rand(7)).ceil.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
+    album = Album.new
     @form = Forms::AlbumForm.new(album)
   end
 
@@ -23,11 +18,12 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    # how you could do it dynamically..(for now)
-    # params[:album][:songs_attributes].size.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
+    album = Album.new
+    # dynamically added songs workaround
+    params[:album][:songs_attributes].size.times do
+      album.songs.build
+    end
+
     @form = Forms::AlbumForm.new(album)
 
     if @form.validate(params["album"])
@@ -40,6 +36,11 @@ class AlbumsController < ApplicationController
 
   def update
     album = Album.find(params[:id])
+    # dynamically added songs workaround
+    (params[:album][:songs_attributes].size - album.songs.size).times do
+       album.songs.build
+    end
+
     @form = Forms::AlbumForm.new(album)
 
     if @form.validate(params["album"])
@@ -49,5 +50,4 @@ class AlbumsController < ApplicationController
       render :edit
     end
   end
-
 end

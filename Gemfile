@@ -7,7 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
-gem 'therubyracer'
+#gem 'therubyr  acer'
 
 gem 'bootstrap-sass', '~> 2.3.2.1'
 

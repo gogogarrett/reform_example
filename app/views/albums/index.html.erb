@@ -6,17 +6,16 @@
   <% @albums.each do |album| %>
     <li>
       <%= link_to album_path(album) do %>
-        <strong>Album Title:</strong>
+        <strong>Album:</strong>
         <%= album.title %>
-        <ul>
+      <% end %>
+      <ul>
           <% album.songs.each do |song| %>
             <li>
-              <strong>Song Name:</strong>
-              <%= song.name %>
+                <%= song.name %>
             </li>
           <% end %>
-        </ul>
-      <% end %>
+      </ul>
     </li>
   <% end %>
 </ul>

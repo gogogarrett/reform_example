@@ -14,12 +14,29 @@
   <%= f.label :title, "Album Title" %>
   <%= f.text_field :title %>
 
+  <p>Songs:</p>
+  <div id="songs">
   <%= f.fields_for :songs do |song| %>
     <div>
       <%= song.label :name %>
-      <%= song.text_field :name %>
+      <%= song.text_field :name, class: "song_name" %>
     </div>
   <% end %>
+  </div>
+
+  <div id="song_template" style="visibility:hidden; height: 0px">
+    <%= f.fields_for :empty_song do |song| %>
+      <div>
+          <%= song.label :name %>
+          <%= song.hidden_field :id, class: "song_id" %>
+          <%= song.text_field :name, class: "song_name" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Add Song", "#", id: "add_song" %>
+  <br/>
+  <br/>
 
   <%= f.submit %>
 <% end %>

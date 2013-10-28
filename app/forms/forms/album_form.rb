@@ -16,5 +16,10 @@ module Forms
       super
       model.save
     end
+
+    # dynamically added songs workaround
+    def empty_song
+      model.songs.build
+    end
   end
 end
