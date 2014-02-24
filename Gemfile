@@ -17,3 +17,7 @@ end
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'reform', git: 'git@github.com:apotonick/reform.git'
+
+group :development, :test do
+  gem 'pry'
+end

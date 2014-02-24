@@ -12,11 +12,6 @@ module Forms
 
     validates :title, presence: true
 
-    def save
-      super
-      model.save
-    end
-
     # dynamically added songs workaround
     def empty_song
       model.songs.build
