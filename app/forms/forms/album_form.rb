@@ -12,5 +12,14 @@ module Forms
     end
 
     validates :title, presence: true
+
+    def save
+      super
+      model.save  # Reform actually does this automatically now
+      # But not this (see https://github.com/apotonick/reform/issues/73)
+      songs.each do |song|
+        song.model.save!
+      end
+    end
   end
 end
