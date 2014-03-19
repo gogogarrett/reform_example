@@ -1,5 +1,6 @@
 module Forms
   class AlbumForm < Reform::Form # FIXME: sub forms don't inherit FBM.
+    include Reform::Form::ActiveRecord
 
     model :album
 
@@ -11,10 +12,5 @@ module Forms
     end
 
     validates :title, presence: true
-
-    def save
-      super
-      model.save
-    end
   end
 end
