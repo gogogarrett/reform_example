@@ -9,11 +9,11 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    # build random amount of songs
-    # (1+rand(7)).ceil.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
+    # Build a random amount of songs
+    album = Album.new
+    (1+rand(7)).ceil.times do
+      album.songs.build
+    end
     @form = Forms::AlbumForm.new(album)
   end
 
@@ -23,11 +23,11 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    # how you could do it dynamically..(for now)
-    # params[:album][:songs_attributes].size.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
+    album = Album.new
+    # Build a Song object for each song that was submitted from the form
+    params[:album][:songs_attributes].size.times do
+      album.songs.build
+    end
     @form = Forms::AlbumForm.new(album)
 
     if @form.validate(params["album"])
