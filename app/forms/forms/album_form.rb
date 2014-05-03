@@ -5,16 +5,11 @@ module Forms
 
     property :title
 
-    collection :songs do
+    collection :songs, populate_if_emtpy: lambda { |fragment, args| model.songs.build } do
       property :name
       validates :name, presence: true
     end
 
     validates :title, presence: true
-
-    # dynamically added songs workaround
-    def empty_song
-      model.songs.build
-    end
   end
 end

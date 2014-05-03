@@ -27,23 +27,13 @@ class AlbumsController < ApplicationController
   end
 
   def album
-    @album ||= album_from_params.tap { |album| append_missing_songs(album) }
+    @album ||= album_from_params
   end
   helper_method :album
 
   def album_from_params
     album = Album.find(params[:id]) if params[:id]
     album || Album.new
-  end
-
-  # dynamically added songs workaround
-  def append_missing_songs(album)
-    return unless params[:album] && params[:album][:songs_attributes]
-
-    params_songs_count = params[:album][:songs_attributes].size
-    album_songs_count = album.songs ? album.songs.size : 0
-
-    (params_songs_count - album_songs_count).abs.times { album.songs.build }
   end
 
   def create_form

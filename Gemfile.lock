@@ -1,26 +1,36 @@
+GIT
+  remote: git@github.com:apotonick/reform.git
+  revision: 3f4124d91ec37b9fa3681d382ce023a0eabebbcd
+  specs:
+    reform (0.2.7)
+      activemodel
+      disposable (~> 0.0.3)
+      representable (~> 1.8.1)
+      uber (~> 0.0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.2)
-      actionpack (= 4.0.2)
+    actionmailer (4.0.4)
+      actionpack (= 4.0.4)
       mail (~> 2.5.4)
-    actionpack (4.0.2)
-      activesupport (= 4.0.2)
+    actionpack (4.0.4)
+      activesupport (= 4.0.4)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.2)
-      activesupport (= 4.0.2)
+    activemodel (4.0.4)
+      activesupport (= 4.0.4)
       builder (~> 3.1.0)
-    activerecord (4.0.2)
-      activemodel (= 4.0.2)
+    activerecord (4.0.4)
+      activemodel (= 4.0.4)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.2)
+      activesupport (= 4.0.4)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.2)
-      i18n (~> 0.6, >= 0.6.4)
+    activesupport (4.0.4)
+      i18n (~> 0.6, >= 0.6.9)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
@@ -38,6 +48,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    disposable (0.0.3)
+      representable (~> 1.8.1)
+      uber
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -67,39 +80,37 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.2)
-      actionmailer (= 4.0.2)
-      actionpack (= 4.0.2)
-      activerecord (= 4.0.2)
-      activesupport (= 4.0.2)
+    rails (4.0.4)
+      actionmailer (= 4.0.4)
+      actionpack (= 4.0.4)
+      activerecord (= 4.0.4)
+      activesupport (= 4.0.4)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.2)
+      railties (= 4.0.4)
       sprockets-rails (~> 2.0.0)
-    railties (4.0.2)
-      actionpack (= 4.0.2)
-      activesupport (= 4.0.2)
+    railties (4.0.4)
+      actionpack (= 4.0.4)
+      activesupport (= 4.0.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
-    reform (0.2.7)
-      activemodel
-      representable (~> 1.7.5)
-      uber (~> 0.0.4)
-    representable (1.7.7)
+    representable (1.8.1)
       multi_json
       nokogiri
-    sass (3.3.7)
-    sass-rails (4.0.1)
+      uber
+    sass (3.2.19)
+    sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
+      sprockets-rails (~> 2.0)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     slop (3.5.0)
-    sprockets (2.12.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -131,9 +142,9 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   pry
-  rails (= 4.0.2)
-  reform
-  sass-rails
+  rails (= 4.0.4)
+  reform!
+  sass-rails (~> 4.0.2)
   sdoc
   sqlite3
   uglifier
