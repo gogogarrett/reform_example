@@ -5,7 +5,7 @@ module Forms
 
     property :title
 
-    collection :songs, populate_if_emtpy: lambda { |fragment, args| model.songs.build } do
+    collection :songs, populate_if_empty: lambda { |fragment, args| model.songs.build } do
       property :name
       validates :name, presence: true
     end

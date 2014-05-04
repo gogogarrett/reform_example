@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:apotonick/reform.git
-  revision: 3f4124d91ec37b9fa3681d382ce023a0eabebbcd
+  revision: c4f392210fa7d8c63ff9fd136e2db30e26148082
   specs:
     reform (0.2.7)
       activemodel
