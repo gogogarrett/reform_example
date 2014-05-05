@@ -9,13 +9,7 @@
         <strong>Album:</strong>
         <%= album.title %>
       <% end %>
-      <ul>
-          <% album.songs.each do |song| %>
-            <li>
-                <%= song.name %>
-            </li>
-          <% end %>
-      </ul>
+      <%= render "songs", { songs: album.songs } %>
     </li>
   <% end %>
 </ul>

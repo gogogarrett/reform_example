@@ -16,22 +16,11 @@
 
   <p>Songs:</p>
   <div id="songs">
-  <%= f.fields_for :songs do |song| %>
-    <div>
-      <%= song.label :name %>
-      <%= song.text_field :name, class: "song_name" %>
-    </div>
-  <% end %>
+    <%= render "songs_form", { f: f, context: :songs } %>
   </div>
 
   <div id="song_template" style="visibility:hidden; height: 0px">
-    <%= f.fields_for :empty_song do |song| %>
-      <div>
-          <%= song.label :name %>
-          <%= song.hidden_field :id, class: "song_id" %>
-          <%= song.text_field :name, class: "song_name" %>
-      </div>
-    <% end %>
+    <%= render "songs_form", { f: f, context: :empty_song } %>
   </div>
 
   <%= link_to "Add Song", "#", id: "add_song" %>

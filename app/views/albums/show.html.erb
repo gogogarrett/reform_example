@@ -6,13 +6,7 @@
 
 <% if @album.songs.any? %>
   <h4>Songs: </h4>
-  <ul>
-    <% @album.songs.each do |song| %>
-      <li>
-        <%= song.name %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render "songs", { songs: @album.songs } %>
 <% end %>
 
 <br />

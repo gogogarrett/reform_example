@@ -1,0 +1,7 @@
+<ul>
+    <% songs.each do |song| %>
+      <li>
+          <%= song.name %> <%= "for #{song.user.title}" if song.user %>
+      </li>
+    <% end %>
+</ul>
