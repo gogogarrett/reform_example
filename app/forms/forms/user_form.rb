@@ -1,7 +1,6 @@
 module Forms
   class UserForm < Reform::Form
-    include DSL
-    include Reform::Form::ActiveModel
+    include Composition
 
     properties [:first_name, :last_name], on: :user
     properties [:email, :locale, :age],   on: :profile

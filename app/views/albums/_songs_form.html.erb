@@ -1,13 +1,22 @@
 <%= f.fields_for context do |song| %>
   <div class="song">
+      <div>
       <%= song.label :name %>
       <%= song.text_field :name, class: "song_name" %>
+      <%= song.hidden_field :id %>
+      </div>
 
+      for
       <%= song.fields_for :user do |user| %>
+        <div>
         <%= user.label :first_name %>
         <%= user.text_field :first_name %>
+        </div>
+        <div>
         <%= user.label :last_name %>
         <%= user.text_field :last_name %>
+        <%= user.hidden_field :id %>
+        </div>
       <% end %>
   </div>
 <% end %>

@@ -11,7 +11,7 @@ module Workflows
       return unless form.validate(params)
 
       form.save do |form, map|
-        album = form.send(:model)
+        album = form.model
         album_manager = ::Service::ManageAlbum.new(params)
         album = album.new_record? ? album_manager.create : album_manager.update(album.id)
         yield album if block_given?
