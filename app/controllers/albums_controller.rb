@@ -11,19 +11,18 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    album = execute_album_workflow
-    album ? respond_with(album) : render(:new)
+    execute_album_workflow(:new)
   end
 
   def update
-    album = execute_album_workflow
-    album ? respond_with(album) : render(:edit)
+    execute_album_workflow(:edit)
   end
 
   private
 
-  def execute_album_workflow
-    Workflows::AlbumWorkflow.new(@form, params[:album]).process
+  def execute_album_workflow(action)
+    album = Workflows::AlbumWorkflow.new(@form, params[:album]).process
+    album ? respond_with(album) : render(action)
   end
 
   def album

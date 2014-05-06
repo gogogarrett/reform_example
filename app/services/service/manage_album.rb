@@ -1,31 +1,26 @@
 module Service
   class ManageAlbum
-    attr_accessor :params
-
-    def initialize(params)
-      @params = safe_params(params)
-    end
-
-    def create
-      store { Album.new }
-    end
-
-    def update(album_id)
-      store { Album.find(album_id) }
+    def store(album)
+      ActiveRecord::Base.transaction do
+        album.songs.each { |song| song.user = save_user(song.user) }
+        album.save
+        album
+      end
     end
 
     private
 
-    def safe_params(params)
-      ActionController::Parameters.new(params).permit!.reject { |key, value| %w{songs empty_song}.include?(key) }
-    end
-
-    def store
-      ActiveRecord::Base.transaction do
-        album = yield
-        album.update!(params)
-        album
+    def save_user(song_user)
+      if song_user.id && User.exists?(song_user.id)
+        song_user.save # update existing user
+        return song_user
       end
+
+      matching_user = User.find_by(first_name: song_user.first_name, last_name: song_user.last_name)
+      return matching_user if matching_user # return matching user
+
+      song_user.save # create new user
+      song_user
     end
   end
 end

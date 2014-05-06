@@ -4,18 +4,10 @@ module Forms
 
     property :title
 
-    find_or_new_user = lambda do |fragment, args|
-      if fragment[:id] && !fragment[:id].empty?
-        User.find(fragment[:id])
-      else
-        User.find_by(first_name: fragment[:first_name], last_name: fragment[:last_name])
-      end || User.new
-    end
-
     collection :songs, populate_if_empty: lambda { |*| model.songs.build } do
       property :name
 
-      property :user, populate_if_empty: find_or_new_user do
+      property :user, populate_if_empty: User do
         property :first_name
         property :last_name
       end
