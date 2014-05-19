@@ -14,12 +14,18 @@
   <%= f.label :title, "Album Title" %>
   <%= f.text_field :title %>
 
-  <%= f.fields_for :songs do |song| %>
-    <div>
-      <%= song.label :name %>
-      <%= song.text_field :name %>
-    </div>
-  <% end %>
+  <p>Songs:</p>
+  <div id="songs">
+    <%= render "songs_form", { f: f, context: :songs } %>
+  </div>
+
+  <div id="song_template" style="visibility:hidden; height: 0px">
+    <%= render "songs_form", { f: f, context: :empty_song } %>
+  </div>
+
+  <%= link_to "Add Song", "#", id: "add_song" %>
+  <br/>
+  <br/>
 
   <%= f.submit %>
 <% end %>

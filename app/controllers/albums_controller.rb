@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  respond_to :js, :html
+  before_action :create_form, except: [:index]
 
   def index
     @albums = Album.all
@@ -8,46 +10,32 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
   end
 
-  def new
-    # build random amount of songs
-    # (1+rand(7)).ceil.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
-    @form = Forms::AlbumForm.new(album)
-  end
-
-  def edit
-    album = Album.find(params[:id])
-    @form = Forms::AlbumForm.new(album)
-  end
-
   def create
-    # how you could do it dynamically..(for now)
-    # params[:album][:songs_attributes].size.times do |i|
-    #   album.songs.build
-    # end
-    album = Album.new(songs: [Song.new, Song.new])
-    @form = Forms::AlbumForm.new(album)
-
-    if @form.validate(params["album"])
-      @form.save
-      redirect_to album_path(album)
-    else
-      render :new
-    end
+    execute_album_workflow(:new)
   end
 
   def update
-    album = Album.find(params[:id])
-    @form = Forms::AlbumForm.new(album)
-
-    if @form.validate(params["album"])
-      @form.save
-      redirect_to album_path(album)
-    else
-      render :edit
-    end
+    execute_album_workflow(:edit)
   end
 
+  private
+
+  def execute_album_workflow(action)
+    album = Workflows::AlbumWorkflow.new(@form, params[:album]).process
+    album ? respond_with(album) : render(action)
+  end
+
+  def album
+    @album ||= album_from_params
+  end
+  helper_method :album
+
+  def album_from_params
+    album = Album.find(params[:id]) if params[:id]
+    album || Album.new
+  end
+
+  def create_form
+    @form = Forms::AlbumForm.new(album)
+  end
 end
