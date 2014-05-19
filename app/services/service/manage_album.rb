@@ -11,6 +11,8 @@ module Service
     private
 
     def save_user(song_user)
+      return unless song_user
+
       if song_user.id && User.exists?(song_user.id)
         song_user.save # update existing user
         return song_user
